@@ -1,12 +1,16 @@
 package com.ucx.training.sessions.myapp1.persistence;
 
 import com.ucx.training.sessions.myapp1.businesslogic.Company;
+
+import java.util.HashMap;
 import java.util.Map;
 
 public class InMemoryDBImpl implements InMemoryDB{
     private Map<Integer, Company> storage;
 
     public InMemoryDBImpl(){
+        // Initialize storage
+        storage = new HashMap<>();
 
     }
 
@@ -22,7 +26,8 @@ public class InMemoryDBImpl implements InMemoryDB{
 
     @Override
     public void remove(Integer id){
-        storage.get(id);
+        if(id == null) throw new RuntimeException("ID cannot be null!");
+        storage.remove(id);
         //throw new UnsupportedOperationException();
     }
 

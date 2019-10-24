@@ -3,19 +3,22 @@ package com.ucx.training.sessions.myapp1.businesslogic;
 public class Employee {
     private String firstName;
     private String lastName;
-    private String position;
+    private Position position;
     private Gender gender;
     private Address address;
+    private Double workingHoursPerMonth;
 
     public Employee(){
 
     }
-    public Employee(String firstName, String lastName, String position, Gender gender, Address address){
+    public Employee(String firstName, String lastName, Position position, Gender gender, Address address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
         this.gender = gender;
         this.address = address;
+      //  this.workingHoursPerMonth = workingHoursPerMonth;
+
     }
 
     public String getFirstName() {
@@ -34,11 +37,11 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public String getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
 
@@ -58,5 +61,9 @@ public class Employee {
         this.address = address;
     }
 
+    public double calculateWage(double workingHoursPerMonth){
 
+        var salary = workingHoursPerMonth * this.position.getWage();
+        return salary;
+    }
 }
