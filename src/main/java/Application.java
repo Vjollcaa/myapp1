@@ -1,8 +1,10 @@
+import com.ucx.training.sessions.myapp1.PersistenceFactory;
 import com.ucx.training.sessions.myapp1.businesslogic.Address;
 import com.ucx.training.sessions.myapp1.businesslogic.Company;
 import com.ucx.training.sessions.myapp1.businesslogic.Employee;
 import com.ucx.training.sessions.myapp1.businesslogic.Gender;
 import com.ucx.training.sessions.myapp1.persistence.InMemoryDB;
+import com.ucx.training.sessions.myapp1.persistence.InMemoryDBImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,15 +26,20 @@ public class Application {
         employees.add(employee3);
 
         Company company = new Company(1, "Best Company", employees);
+        //Company company1 = new Company(2, "Second Company", employees);
 
         //Save Company to InMemoryDB
-        InMemoryDB db = new InMemoryDB();
+        InMemoryDB db = PersistenceFactory.getInMemoryDBInstance();
         db.createOrUpdate(company);
+        //db.createOrUpdate(company1);
 
         //Retrieve a company from DB
         Company foundCompany = db.findById(1);
         System.out.println("Company ID: " + foundCompany.getId() + "Company Name: " + foundCompany.getName() + "Nr. of employees: " + foundCompany.getEmployees().size());
 
+        //Remove a company from DB
+        Company deletedCompany = db.findById(1);
+        System.out.println(deletedCompany.getId());
 
     }
 }
