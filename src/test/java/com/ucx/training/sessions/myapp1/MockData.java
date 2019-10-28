@@ -1,13 +1,16 @@
-import com.ucx.training.sessions.myapp1.PersistenceFactory;
+package com.ucx.training.sessions.myapp1;
+
 import com.ucx.training.sessions.myapp1.businesslogic.*;
-import com.ucx.training.sessions.myapp1.persistence.InMemoryDB;
-import com.ucx.training.sessions.myapp1.persistence.InMemoryDBImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Application {
-    public static void main(String[] args) {
+public class MockData {
+    private MockData(){
+
+    }
+
+    public static Company getCompany(){
         List<Employee> employees = new ArrayList<>();
 
         Address address1 = new Address("Kosovo", "Kosovo", "Prishtina", "1st street", 10000);
@@ -34,23 +37,8 @@ public class Application {
         Double salaryValue4 = employee4.calculateWage(30.0);
         System.out.println("The salary of " + employee4.getFirstName() + " is " + salaryValue4);
 
-
         Company company = new Company(1, "Best Company", employees);
-        //Company company1 = new Company(2, "Second Company", employees);
-
-        //Save Company to InMemoryDB
-        InMemoryDB db = PersistenceFactory.getInMemoryDBInstance();
-        db.createOrUpdate(company);
-        //db.createOrUpdate(company1);
-
-        //Retrieve a company from DB
-        Company foundCompany = db.findById(1);
-        System.out.println("Company ID: " + foundCompany.getId() + " Company Name: " + foundCompany.getName() + " Nr. of employees: " + foundCompany.getEmployees().size());
-
-
-        //Remove a company from DB
-        Company deletedCompany = db.findById(1);
-        System.out.println(deletedCompany.getId());
+        return company;
 
     }
 }

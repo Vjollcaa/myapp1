@@ -25,9 +25,9 @@ public class InMemoryDBImpl implements InMemoryDB{
     }
 
     @Override
-    public void remove(Integer id){
+    public Company remove(Integer id){
         if(id == null) throw new RuntimeException("ID cannot be null!");
-        storage.remove(id);
+        return storage.remove(id);
         //throw new UnsupportedOperationException();
     }
 

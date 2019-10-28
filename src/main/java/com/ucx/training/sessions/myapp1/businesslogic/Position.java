@@ -1,7 +1,7 @@
 package com.ucx.training.sessions.myapp1.businesslogic;
 
 public enum Position {
-    PM(1), PROGRAMMER(2), QA(3), DEVOPS(4);
+    PM(5), PROGRAMMER(2), QA(3), DEVOPS(4);
 
     private double wage;
 
